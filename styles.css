@@ -1,0 +1,81 @@
+.as-970-90 {
+	width: 970px;
+	height: 90px;
+}
+.as-728-90 {
+	width: 728px;
+	height: 90px;
+}
+.as-728-15 {
+	width: 728px;
+	height: 15px;
+}
+.as-468-60 {
+	width: 468px;
+	height: 60px;
+}
+.as-468-15 {
+	display: inline-block;
+	width: 468px;
+	height: 15px;
+}
+.as-336-280 {
+	width: 336px;
+	height: 280px;
+}
+.as-320-50 {
+	width: 320px;
+	height: 50px;
+}
+.as-300-250 {
+	width: 300px;
+	height: 250px;
+}
+.as-250-250 {
+	width: 250px;
+	height: 250px;
+}
+.as-234-60 {
+	width: 234px;
+	height: 60px;
+}
+.as-200-200 {
+	width: 200px;
+	height: 200px;
+}
+.as-200-90 {
+	width: 200px;
+	height: 90px;
+}
+.as-180-150 {
+	width: 180px;
+	height: 150px;
+}
+.as-125-125 {
+	width: 125px;
+	height: 125px;
+}
+.as-center  {
+	margin: 0px auto 0px auto;
+}
+.as-left {
+	margin: 10px 20px 10px 0px;
+	float: left;
+}
+.as-right {
+	margin: 10px 0px 10px 20px;
+	float: right;
+}
+.as-clear {
+	clear: both;
+}
+.as-hide {
+	display: none;
+}
+.as-text {
+	text-align: center;
+	text-transform: uppercase;
+	color: #cccccc;
+	font-size: 12px;
+	line-height: 24px;
+}
