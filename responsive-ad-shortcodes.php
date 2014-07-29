@@ -20,6 +20,14 @@ function ras_enqueue () {
 add_action( 'wp_enqueue_scripts', 'ras_enqueue' );
 
 /*
+	Allow shortcodes in widgets
+*/
+
+if ( !is_admin() ) {
+	add_filter('widget_text', 'do_shortcode');
+}
+
+/*
 	Shortcode
 */
 
