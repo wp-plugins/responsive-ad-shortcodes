@@ -46,6 +46,8 @@ function ras_show ( $atts ) {
 
 	$account = get_option( 'ras_adsense_pub_id' ); 
 
+	$backupad = get_option( 'ras_adsense_backup_slot' ); 
+
 	$id = rand();
 
 	$output = "
@@ -134,7 +136,7 @@ function ras_show ( $atts ) {
 
 			document.write(\"<!-- DEFAULT 125 x 125 -->\");
 			document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
-			document.write(\"<ins class='adsbygoogle' style='display: block; width: 125px; height: 125px;' data-ad-client='$account' data-ad-slot='9630648961' data-ad-format='auto'></ins>\");
+			document.write(\"<ins class='adsbygoogle' style='display: block; width: 125px; height: 125px;' data-ad-client='$account' data-ad-slot='$backupad' data-ad-format='auto'></ins>\");
 			document.getElementById('as-$id').className = document.getElementById('as-$id').className + 'as-center as-125-125 ' + adWidth;
 			document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
 
