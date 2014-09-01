@@ -57,6 +57,7 @@
 }
 .as-center  {
 	margin: 0px auto 0px auto;
+	text-align: center;
 }
 .as-left {
 	margin: 10px 20px 10px 0px;
