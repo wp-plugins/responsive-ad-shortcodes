@@ -45,7 +45,7 @@ function ras_show ( $atts ) {
 		$align = esc_attr( $aligns );
 
 		$output = "
-		<div id='as-$id as-$align'>
+		<div id='as-$id' class='as-$align'>
 
 			<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
 			<!-- Google Smart Sizing -->
@@ -59,6 +59,19 @@ function ras_show ( $atts ) {
 			</script>
 
 		</div>
+		";
+
+	} else if ( esc_attr( $sizes ) == 'dfp' ) {
+
+		$slot = esc_attr( $slots );
+		$align = esc_attr( $aligns );
+
+		$output ="
+			<div id='$slot' class='as-$align'>
+				<script type='text/javascript'>
+					googletag.cmd.push(function() { googletag.display('$slot'); });
+				</script>
+			</div>
 		";
 
 	} else {
@@ -88,18 +101,9 @@ function ras_show ( $atts ) {
 					if ( $adtext[0] == 1 ) {
 						document.write(\"<div class='as-text'>Advertisement</div>\");
 					}
-					var slotisdfp = \"$slots[0]\".indexOf(\"div-gpt-ad\");
-					if ( slotisdfp == -1 ) {
-						document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
-						document.write(\"<ins class='adsbygoogle' style='display: block; width: $large[0]px; height: $large[1]px;' data-ad-client='$account' data-ad-slot='$slots[0]' data-ad-formats='$formats[0]'></ins>\");
-						document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
-					} else {
-						document.write(\"<div id='$slots[0]' style='display: block; width: $large[0]px; height: $large[1]px;'>\");
-						document.write(\"<scr\"+\"ipt type='text/javascript'>\");
-						document.write(\"googletag.cmd.push(function(){googletag.display('$slots[0]');});\");
-						document.write(\"</scr\"+\"ipt>\");
-						document.write(\"</div>\");
-					}
+					document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
+					document.write(\"<ins class='adsbygoogle' style='display: block; width: $large[0]px; height: $large[1]px;' data-ad-client='$account' data-ad-slot='$slots[0]' data-ad-formats='$formats[0]'></ins>\");
+					document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
 				} else {
 					document.getElementById('as-$id').className = document.getElementById('as-$id').className + ' as-hide';
 				}
@@ -113,18 +117,9 @@ function ras_show ( $atts ) {
 					if ( $adtext[1] == 1 ) {
 						document.write(\"<div class='as-text'>Advertisement</div>\");
 					}
-					var slotisdfp = \"$slots[1]\".indexOf(\"div-gpt-ad\");
-					if ( slotisdfp == -1 ) {
-						document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
-						document.write(\"<ins class='adsbygoogle' style='display: block; width: $medium[0]px; height: $medium[1]px;' data-ad-client='$account' data-ad-slot='$slots[1]' data-ad-format='$formats[1]'></ins>\");
-						document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
-					} else {
-						document.write(\"<div id='$slots[1]' style='display: block; width: $medium[0]px; height: $medium[1]px;'>\");
-						document.write(\"<scr\"+\"ipt type='text/javascript'>\");
-						document.write(\"googletag.cmd.push(function(){googletag.display('$slots[1]');});\");
-						document.write(\"</scr\"+\"ipt>\");
-						document.write(\"</div>\");
-					}
+					document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
+					document.write(\"<ins class='adsbygoogle' style='display: block; width: $medium[0]px; height: $medium[1]px;' data-ad-client='$account' data-ad-slot='$slots[1]' data-ad-format='$formats[1]'></ins>\");
+					document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
 				} else {
 					document.getElementById('as-$id').className = document.getElementById('as-$id').className + ' as-hide';
 				}
@@ -138,18 +133,9 @@ function ras_show ( $atts ) {
 					if ( $adtext[2] == 1 ) {
 						document.write(\"<div class='as-text'>Advertisement</div>\");
 					}
-					var slotisdfp = \"$slots[2]\".indexOf(\"div-gpt-ad\");
-					if ( slotisdfp == -1 ) {
-						document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
-						document.write(\"<ins class='adsbygoogle' style='display: block; width: $small[0]px; height: $small[1]px;' data-ad-client='$account' data-ad-slot='$slots[2]' data-ad-format='$formats[2]'></ins>\");
-						document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
-					} else {
-						document.write(\"<div id='$slots[2]' style='display: block; width: $small[0]px; height: $small[1]px;'>\");
-						document.write(\"<scr\"+\"ipt type='text/javascript'>\");
-						document.write(\"googletag.cmd.push(function(){googletag.display('$slots[2]');});\");
-						document.write(\"</scr\"+\"ipt>\");
-						document.write(\"</div>\");
-					}
+					document.write(\"<scr\"+\"ipt async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></scr\"+\"ipt>\");
+					document.write(\"<ins class='adsbygoogle' style='display: block; width: $small[0]px; height: $small[1]px;' data-ad-client='$account' data-ad-slot='$slots[2]' data-ad-format='$formats[2]'></ins>\");
+					document.write(\"<scr\"+\"ipt>(adsbygoogle = window.adsbygoogle || []).push({});</scr\"+\"ipt>\");
 				} else {
 					document.getElementById('as-$id').className = document.getElementById('as-$id').className + ' as-hide';
 				}
@@ -191,6 +177,53 @@ function ras_insert_doubleclick_header_js () {
 add_action( 'wp_head', 'ras_insert_doubleclick_header_js' );
 
 /*
+	Viewport Overlay
+*/
+
+function ras_refresh_and_overlay_js () {
+	if ( get_option( 'ras_viewport_overlay' ) == "On" ) {
+		$output.="<div style=\"position:fixed;top:0;right:0px;background-color:rgba(255,255,255,1);padding:10px 20px;z-index: 1000000;\">Viewport inner width = <span id=\"width\"></span>, height = <span id=\"height\"></span></div>";
+	} else {
+		$output.="<div style=\"position:fixed;top:0;right:0px;background-color:rgba(255,255,255,1);padding:10px 20px;z-index: 1000000; display: none;\">Viewport inner width = <span id=\"width\"></span>, height = <span id=\"height\"></span></div>";
+	}
+	$output.= "
+		<script>
+		  var _now = Date.now || function() { return new Date().getTime(); };
+		  var _debounce = function(func, wait, immediate) {
+			var timeout;
+			return function() {
+				var context = this, args = arguments;
+				var later = function() {
+					timeout = null;
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		};
+
+		document.getElementById('width').innerHTML = window.innerWidth || document.documentElement.clientWidth;
+		document.getElementById('height').innerHTML = window.innerHeight || document.documentElement.clientHeight;
+
+		window.addEventListener(\"resize\", _debounce(function() {
+			console.log (\"Doing refresh\");
+			document.getElementById (\"width\").innerHTML = window.innerWidth || document.documentElement.clientWidth;
+			document.getElementById (\"height\").innerHTML = window.innerHeight || document.documentElement.clientHeight;
+			googletag.pubads().refresh([window.slot1,window.slot2,window.slot3]);
+		  }, 200)
+		);
+		</script>
+		<h1>Yo yo yo!</h1>
+	";
+	echo $output;
+}
+if ( get_option( 'ras_viewport_overlay' ) == "On" || get_option( 'ras_auto_refresh' ) == "On" ) {
+	add_action( 'wp_footer', 'ras_refresh_and_overlay_js' );
+}
+
+/*
 	Settings
 */
 
@@ -213,6 +246,12 @@ function ras_options_page() {
 
 		$ras_option_03 = stripslashes( $_POST['ras_doubleclick_header_js'] );
 		update_option( 'ras_doubleclick_header_js', $ras_option_03 );
+				
+		$ras_option_04 = stripslashes( $_POST['ras_viewport_overlay'] );
+		update_option( 'ras_viewport_overlay', $ras_option_04 );
+				
+		$ras_option_05 = stripslashes( $_POST['ras_auto_refresh'] );
+		update_option( 'ras_auto_refresh', $ras_option_05 );
 				
 		echo 'Options Updated!';
 		echo '</strong></p></div>';
@@ -291,6 +330,26 @@ function ras_options_page() {
 							<span>This is optional and only needed if you intend to use DoubleClick ads. This also needs to be carefully edited so as not deystroy any existing DoubleClick placements.</span>
 						</td>
 						<td align="left" width="80%"><textarea class="wp-editor-area" style="width: 100%;" name="ras_doubleclick_header_js" rows="20"><?php echo get_option( 'ras_doubleclick_header_js' ); ?></textarea></td>
+					</tr>
+					<tr class="alternate">
+						<td class="plugin-title" width="20%">
+							<strong>Viewport Overlay</strong>
+							<span>Turn on a viewport overlay to see viewport dimensions in real time.</span>
+						</td>
+					   <td align="left" width="80%">
+							<input type="radio" name="ras_viewport_overlay" value="On" <?php if ( get_option('ras_viewport_overlay') == "On" ) { echo "checked"; } ?>>On&nbsp;
+							<input type="radio" name="ras_viewport_overlay" value="Off" <?php if ( get_option('ras_viewport_overlay') == "Off" ) { echo "checked"; } ?>>Off&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td class="plugin-title" width="20%">
+							<strong>Auto Refresh</strong>
+							<span>Make DFP ads auto refresh when the browser is resized.</span>
+						</td>
+					   <td align="left" width="80%">
+							<input type="radio" name="ras_auto_refresh" value="On" <?php if ( get_option('ras_auto_refresh') == "On" ) { echo "checked"; } ?>>On&nbsp;
+							<input type="radio" name="ras_auto_refresh" value="Off" <?php if ( get_option('ras_auto_referesh') == "Off" ) { echo "checked"; } ?>>Off&nbsp;
+						</td>
 					</tr>
 				</table>
 			</fieldset>
