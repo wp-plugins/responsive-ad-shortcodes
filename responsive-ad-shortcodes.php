@@ -37,7 +37,7 @@ function ras_show ( $atts ) {
 	$backupad = get_option( 'ras_adsense_backup_slot' ); 
 	$id = rand();
 
-	extract( shortcode_atts( array( 'aligns' => 'center|center|center', 'slots' => $backupad, 'formats' => 'auto|auto|auto', 'sizes' => 'auto', 'adtext' => '0|0|0' ), $atts ) );
+	extract( shortcode_atts( array( 'aligns' => 'center|center|center', 'slots' => $backupad, 'formats' => 'auto|auto|auto', 'sizes' => 'auto', 'adtext' => '0' ), $atts ) );
 
 	if ( esc_attr( $sizes ) == 'auto' ) {
 
@@ -73,11 +73,11 @@ function ras_show ( $atts ) {
 
 		$output ="
 			<div id='$slot' class='as-$align'>
+				<!-- DFP -->
 				<script type='text/javascript'>
 					if ( $adtext == 1 ) {
 						document.write(\"<div class='as-text'>Advertisement</div>\");
 					}
-					<!-- DFP -->
 					googletag.cmd.push(function() { googletag.display('$slot'); });
 				</script>
 			</div>
