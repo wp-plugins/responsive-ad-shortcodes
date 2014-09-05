@@ -220,7 +220,7 @@ function ras_refresh_and_overlay_js () {
 			console.log (\"Doing refresh\");
 			document.getElementById (\"width\").innerHTML = window.innerWidth || document.documentElement.clientWidth;
 			document.getElementById (\"height\").innerHTML = window.innerHeight || document.documentElement.clientHeight;
-			googletag.pubads().refresh([window.slot1,window.slot2,window.slot3]);
+			googletag.pubads().refresh([window.slot1,window.slot2,window.slot3,window.slot4]);
 		  }, 200)
 		);
 		</script>
