@@ -2,7 +2,7 @@
 /*
 Plugin Name: Responsive Ad Shortcodes
 Description: Responsive Ad Shortcodes is a WordPress plugin that was built to scratch an itch. For some time now we have been trying to get AdSense and DoubleClick to play nice with responsive websites. Not easy as the responsive ad offerings from Google fall very short and offer little control. This plugin aims to address that allowing users to control ad display on 3 types of screen (small, medium & large) and blend ads from AdSense and DoubleClick into single units. Because of the focus on control and flexibility this plugin uses VERY verbose shortcodes. It is not designed for newbies. If you want a simple AdSdene short code manage, take a look at <a href="https://wordpress.org/plugins/wordpress-plugin-for-simple-google-adsense-insertion/" target="_blank">WP Simple AdSense Insertion</a>.
-Version: 1.2
+Version: 1.3
 Plugin URI: https://wordpress.org/plugins/responsive-ad-shortcodes/
 Author: <a href="http://www.hypedtext.com/" target="_blank">hypedtext</a>
 Author URI: 
@@ -43,11 +43,15 @@ function ras_show ( $atts ) {
 
 		$slot = esc_attr( $slots );
 		$align = esc_attr( $aligns );
+		$adtext = esc_attr( $adtext );
 
 		$output = "
 		<div id='as-$id' class='as-$align'>
 
 			<script async src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+			if ( $adtext == 1 ) {
+				document.write(\"<div class='as-text'>Advertisement</div>\");
+			}
 			<!-- Google Smart Sizing -->
 			<ins class=\"adsbygoogle\"
 				 style=\"display:block\"
@@ -65,10 +69,15 @@ function ras_show ( $atts ) {
 
 		$slot = esc_attr( $slots );
 		$align = esc_attr( $aligns );
+		$adtext = esc_attr( $adtext );
 
 		$output ="
 			<div id='$slot' class='as-$align'>
 				<script type='text/javascript'>
+					if ( $adtext == 1 ) {
+						document.write(\"<div class='as-text'>Advertisement</div>\");
+					}
+					<!-- DFP -->
 					googletag.cmd.push(function() { googletag.display('$slot'); });
 				</script>
 			</div>
