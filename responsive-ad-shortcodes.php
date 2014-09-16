@@ -71,13 +71,14 @@ function ras_show ( $atts ) {
 		$align = esc_attr( $aligns );
 		$adtext = esc_attr( $adtext );
 
-		$output ="
+		if ( $adtext == "1" ) {
+				$output = "<div class='as-text'>Advertisement</div>";
+		}
+
+		$output .= "
 			<div id='$slot' class='as-$align'>
 				<!-- DFP -->
 				<script type='text/javascript'>
-					if ( $adtext == 1 ) {
-						document.write(\"<div class='as-text'>Advertisement</div>\");
-					}
 					googletag.cmd.push(function() { googletag.display('$slot'); });
 				</script>
 			</div>
@@ -220,7 +221,7 @@ function ras_refresh_and_overlay_js () {
 			console.log (\"Doing refresh\");
 			document.getElementById (\"width\").innerHTML = window.innerWidth || document.documentElement.clientWidth;
 			document.getElementById (\"height\").innerHTML = window.innerHeight || document.documentElement.clientHeight;
-			googletag.pubads().refresh([window.slot1,window.slot2,window.slot3,window.slot4]);
+			googletag.pubads().refresh([window.slot1,window.slot2,window.slot3,window.slot4,window.slot5]);
 		  }, 200)
 		);
 		</script>
