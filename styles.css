@@ -55,8 +55,9 @@
 	width: 125px;
 	height: 125px;
 }
-.as-center  {
-	margin: 0px auto 0px auto;
+.as-center, .as-center div {
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 .as-left {

@@ -36,6 +36,7 @@ function ras_show ( $atts ) {
 	$account = get_option( 'ras_adsense_pub_id' ); 
 	$backupad = get_option( 'ras_adsense_backup_slot' ); 
 	$id = rand();
+	$output = null;
 
 	extract( shortcode_atts( array( 'aligns' => 'center|center|center', 'slots' => $backupad, 'formats' => 'auto|auto|auto', 'sizes' => 'auto', 'adtext' => '0' ), $atts ) );
 
@@ -72,17 +73,21 @@ function ras_show ( $atts ) {
 		$adtext = esc_attr( $adtext );
 
 		if ( $adtext == "1" ) {
-				$output = "<div class='as-text'>Advertisement</div>";
+			$output = "<div class='as-text'>Advertisement</div><div id='$slot' class='as-$align'>
+					<!-- DFP -->
+					<script type='text/javascript'>
+						googletag.cmd.push(function() { googletag.display('$slot'); });
+					</script>
+				</div>";
+		} else {
+			$output = "<div id='$slot' class='as-$align'>
+					<!-- DFP -->
+					<script type='text/javascript'>
+						googletag.cmd.push(function() { googletag.display('$slot'); });
+					</script>
+				</div>";
 		}
 
-		$output .= "
-			<div id='$slot' class='as-$align'>
-				<!-- DFP -->
-				<script type='text/javascript'>
-					googletag.cmd.push(function() { googletag.display('$slot'); });
-				</script>
-			</div>
-		";
 
 	} else {
 
