@@ -3,9 +3,9 @@
 Contributors: hypedtext
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WSVM264W5YDNS
 Tags: google adsense, doubleclick, ad manager, plugin, adsense, insert adsense, adsense ad, ad code, insert ad, ads, adsense plugin, advertising
-Requires at least: 3.9.1
-Tested up to: 3.9.1
-Stable tag: 1.1
+Requires at least: 4.1
+Tested up to: 4.1
+Stable tag: 1.4
 License: GPLv2 or later
 
 Advanced Wordpress plugin to insert Google Adsense / DoubleClick to your posts, pages and sidebar.
@@ -32,3 +32,5 @@ None at this time.
 == Changelog ==
 
 1.0 - Initial release
+
+1.4 - Updates and bug fixes
