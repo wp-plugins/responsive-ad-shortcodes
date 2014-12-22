@@ -186,6 +186,7 @@ add_shortcode( 'ras', 'ras_show' );
 */
 
 function ras_insert_doubleclick_header_js () {
+	$output = null;
 	$output = get_option( 'ras_doubleclick_header_js' );
 	echo $output;
 }
