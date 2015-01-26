@@ -1,13 +1,13 @@
 <?php
 /*
-Plugin Name: Responsive Ad Shortcodes
-Description: Responsive Ad Shortcodes is a WordPress plugin that was built to scratch an itch. For some time now we have been trying to get AdSense and DoubleClick to play nice with responsive websites. Not easy as the responsive ad offerings from Google fall very short and offer little control. This plugin aims to address that allowing users to control ad display on 3 types of screen (small, medium & large) and blend ads from AdSense and DoubleClick into single units. Because of the focus on control and flexibility this plugin uses VERY verbose shortcodes. It is not designed for newbies. If you want a simple AdSdene short code manage, take a look at <a href="https://wordpress.org/plugins/wordpress-plugin-for-simple-google-adsense-insertion/" target="_blank">WP Simple AdSense Insertion</a>.
-Version: 1.4
-Plugin URI: https://wordpress.org/plugins/responsive-ad-shortcodes/
-Author: <a href="http://www.hypedtext.com/" target="_blank">hypedtext</a>
-Author URI: 
-Description: 
-License: GPLv2 or later
+	Plugin Name: Responsive Ad Shortcodes
+	Description: Responsive Ad Shortcodes is a WordPress plugin that was built to scratch an itch. For some time now we have been trying to get AdSense and DoubleClick to play nice with responsive websites. Not easy as the responsive ad offerings from Google fall very short and offer little control. This plugin aims to address that allowing users to control ad display on 3 types of screen (small, medium & large) and blend ads from AdSense and DoubleClick into single units. Because of the focus on control and flexibility this plugin uses VERY verbose shortcodes. It is not designed for newbies. If you want a simple AdSdene short code manage, take a look at <a href="https://wordpress.org/plugins/wordpress-plugin-for-simple-google-adsense-insertion/" target="_blank">WP Simple AdSense Insertion</a>.
+	Version: 1.4
+	Plugin URI: https://wordpress.org/plugins/responsive-ad-shortcodes/
+	Author: <a href="http://www.hypedtext.com/" target="_blank">hypedtext</a>
+	Author URI: 
+	Description: 
+	License: GPLv2 or later
 */
 
 /*
@@ -187,8 +187,13 @@ add_shortcode( 'ras', 'ras_show' );
 
 function ras_insert_doubleclick_header_js () {
 	$output = null;
-	$output = get_option( 'ras_doubleclick_header_js' );
-	echo $output;
+	if ( !is_single() ) {
+		$output = get_option( 'ras_doubleclick_header_js_02' );
+		echo str_replace( array( "\n", "\r" ), '', $output );
+	} else {
+		$output = get_option( 'ras_doubleclick_header_js' );
+		echo str_replace( array( "\n", "\r" ), '', $output );
+	}
 }
 add_action( 'wp_head', 'ras_insert_doubleclick_header_js' );
 
@@ -197,6 +202,7 @@ add_action( 'wp_head', 'ras_insert_doubleclick_header_js' );
 */
 
 function ras_refresh_and_overlay_js () {
+	$output = null;
 	if ( get_option( 'ras_viewport_overlay' ) == "On" ) {
 		$output.="<div style=\"position:fixed;top:0;right:0px;background-color:rgba(255,255,255,1);padding:10px 20px;z-index: 1000000;\">Viewport inner width = <span id=\"width\"></span>, height = <span id=\"height\"></span></div>";
 	} else {
@@ -267,6 +273,9 @@ function ras_options_page() {
 				
 		$ras_option_05 = stripslashes( $_POST['ras_auto_refresh'] );
 		update_option( 'ras_auto_refresh', $ras_option_05 );
+				
+		$ras_option_06 = stripslashes( $_POST['ras_doubleclick_header_js_02'] );
+		update_option( 'ras_doubleclick_header_js_02', $ras_option_06 );
 				
 		echo 'Options Updated!';
 		echo '</strong></p></div>';
@@ -345,6 +354,13 @@ function ras_options_page() {
 							<span>This is optional and only needed if you intend to use DoubleClick ads. This also needs to be carefully edited so as not deystroy any existing DoubleClick placements.</span>
 						</td>
 						<td align="left" width="80%"><textarea class="wp-editor-area" style="width: 100%;" name="ras_doubleclick_header_js" rows="20"><?php echo get_option( 'ras_doubleclick_header_js' ); ?></textarea></td>
+					</tr>
+					<tr>
+						<td class="plugin-title" width="20%">
+							<strong>DoubleClick Header JS 02</strong>
+							<span>This is optional and only needed if you intend to use DoubleClick ads. This also needs to be carefully edited so as not deystroy any existing DoubleClick placements.</span>
+						</td>
+						<td align="left" width="80%"><textarea class="wp-editor-area" style="width: 100%;" name="ras_doubleclick_header_js_02" rows="20"><?php echo get_option( 'ras_doubleclick_header_js_02' ); ?></textarea></td>
 					</tr>
 					<tr class="alternate">
 						<td class="plugin-title" width="20%">
